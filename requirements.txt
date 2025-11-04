@@ -1,0 +1,56 @@
+# WirelessPen v2.2.0 - Python Dependencies
+# Professional Wireless Penetration Testing Framework
+
+# Core Python packages (usually included with Python 3.6+)
+# These are mainly for documentation and development
+
+# Standard library modules used:
+# - os
+# - sys  
+# - subprocess
+# - argparse
+# - signal
+# - time
+# - platform
+# - re
+# - threading
+# - json
+# - hashlib
+# - datetime
+# - pathlib
+# - typing
+
+# Development and testing dependencies
+pytest>=6.0.0
+pytest-cov>=2.10.0
+flake8>=3.8.0
+black>=20.8b1
+mypy>=0.812
+
+# Optional: For enhanced functionality
+psutil>=5.7.0          # System and process utilities
+colorama>=0.4.4        # Cross-platform colored terminal text
+rich>=10.0.0           # Rich text and beautiful formatting (optional)
+click>=7.1.2           # Command line interface creation (if migrating from argparse)
+
+# Documentation
+sphinx>=3.0.0          # Documentation generation
+sphinx-rtd-theme>=0.5.0
+
+# Note: WirelessPen primarily uses system tools and doesn't require
+# many Python packages. The main dependencies are system-level tools:
+#
+# REQUIRED SYSTEM TOOLS:
+# - aircrack-ng suite (aircrack-ng, airodump-ng, aireplay-ng, airmon-ng)
+# - wireless-tools (iwconfig, iwlist)  
+# - iw (modern wireless tool)
+# - macchanger (MAC address manipulation)
+# - ethtool (network interface information)
+#
+# OPTIONAL SYSTEM TOOLS:
+# - reaver (WPS attacks)
+# - bully (WPS attacks)  
+# - hcxtools (PMKID attacks)
+# - hashcat (password cracking)
+# - hostapd (Evil Twin attacks)
+# - dnsmasq (DHCP/DNS server)

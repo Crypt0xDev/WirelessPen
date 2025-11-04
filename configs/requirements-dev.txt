@@ -1,0 +1,24 @@
+# Development dependencies for testing and code quality
+pytest>=6.0.0
+pytest-cov>=2.10.0
+pytest-mock>=3.6.0
+pytest-timeout>=1.4.0
+
+# Code formatting and linting
+black>=21.0.0
+flake8>=3.9.0
+isort>=5.9.0
+mypy>=0.910
+
+# Security scanning
+bandit[toml]>=1.7.0
+safety>=1.10.0
+
+# Documentation
+sphinx>=4.0.0
+sphinx-rtd-theme>=0.5.0
+myst-parser>=0.15.0
+
+# Development tools
+pre-commit>=2.15.0
+tox>=3.24.0

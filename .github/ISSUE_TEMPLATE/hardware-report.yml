@@ -1,0 +1,163 @@
+name: Hardware Compatibility
+description: Report hardware compatibility status or issues
+title: "[HARDWARE] "
+labels: ["hardware", "compatibility"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🔧 Hardware Compatibility Report
+        
+        Help us improve WirelessPen's hardware support by reporting your adapter's compatibility status.
+        
+        **This template is for:**
+        - Reporting new working hardware
+        - Reporting hardware issues
+        - Sharing driver installation tips
+        - Updating compatibility information
+
+  - type: dropdown
+    id: report-type
+    attributes:
+      label: Report Type
+      description: What type of hardware report is this?
+      options:
+        - "✅ Working Hardware - Fully Compatible"
+        - "⚠️ Partial Compatibility - Some Issues"
+        - "❌ Not Working - Incompatible"
+        - "🔧 Driver/Setup Instructions"
+    validations:
+      required: true
+
+  - type: input
+    id: device-name
+    attributes:
+      label: Device Name/Model
+      description: Full name and model number of your wireless adapter
+      placeholder: "TP-Link AC600 T2U Plus"
+    validations:
+      required: true
+
+  - type: input
+    id: chipset
+    attributes:
+      label: Chipset
+      description: The chipset used in your adapter
+      placeholder: "RTL8812AU"
+    validations:
+      required: true
+
+  - type: input
+    id: vendor-product-id
+    attributes:
+      label: Vendor:Product ID
+      description: USB Vendor and Product ID (from lsusb)
+      placeholder: "2357:012d"
+
+  - type: dropdown
+    id: os-tested
+    attributes:
+      label: Operating System Tested
+      description: What OS did you test this on?
+      options:
+        - Ubuntu 20.04
+        - Ubuntu 22.04
+        - Debian 11
+        - Debian 12
+        - Kali Linux
+        - Arch Linux
+        - Other (specify below)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: functionality
+    attributes:
+      label: Functionality Status
+      description: Check all that apply to your hardware
+      options:
+        - label: "✅ Monitor Mode - Works correctly"
+        - label: "✅ Packet Injection - Confirmed working"
+        - label: "✅ 2.4GHz Band - Supported"
+        - label: "✅ 5GHz Band - Supported"
+        - label: "⚠️ Monitor Mode - Works with workarounds"
+        - label: "⚠️ Packet Injection - Partially working"
+        - label: "❌ Monitor Mode - Not working"
+        - label: "❌ Packet Injection - Not supported"
+
+  - type: textarea
+    id: driver-info
+    attributes:
+      label: Driver Information
+      description: Driver details and installation method
+      placeholder: |
+        Driver version: 
+        Installation method: 
+        Source: (e.g., built-in, dkms, compiled from source)
+        Any special configuration required:
+
+  - type: textarea
+    id: setup-instructions
+    attributes:
+      label: Setup Instructions
+      description: Step-by-step instructions to get this hardware working (if applicable)
+      placeholder: |
+        1. Install dependencies: sudo apt install ...
+        2. Download driver: git clone ...
+        3. Compile: make && sudo make install
+        4. Load module: sudo modprobe ...
+
+  - type: textarea
+    id: testing-commands
+    attributes:
+      label: Testing Commands Used
+      description: Commands used to test functionality
+      placeholder: |
+        # Monitor mode test
+        sudo airmon-ng start wlan0
+        
+        # Injection test
+        sudo aireplay-ng -9 wlan0mon
+        
+        # WirelessPen test
+        sudo python3 main.py --check
+
+  - type: textarea
+    id: performance-notes
+    attributes:
+      label: Performance Notes
+      description: Any performance observations (range, speed, stability)
+      placeholder: |
+        Range: Excellent/Good/Average/Poor
+        Stability: Rock solid/Occasional disconnects/Frequent issues
+        Special notes: 
+
+  - type: textarea
+    id: issues
+    attributes:
+      label: Known Issues
+      description: Any problems or limitations encountered
+      placeholder: |
+        - Issue description
+        - Workaround (if any)
+        - Impact on functionality
+
+  - type: input
+    id: purchase-link
+    attributes:
+      label: Purchase Link (Optional)
+      description: Where others can buy this adapter
+      placeholder: "https://amazon.com/..."
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Information
+      description: Any other relevant information
+      placeholder: |
+        - Price range
+        - Availability
+        - Alternative models
+        - Recommendations

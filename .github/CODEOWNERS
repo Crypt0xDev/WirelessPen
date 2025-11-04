@@ -1,0 +1,23 @@
+# Global code owners
+* @Crypt0xDev
+
+# Documentation
+/doc/ @Crypt0xDev
+README.md @Crypt0xDev
+SECURITY.md @Crypt0xDev
+
+# Core framework
+main.py @Crypt0xDev
+config.py @Crypt0xDev
+
+# Installation and configuration  
+install.sh @Crypt0xDev
+requirements*.txt @Crypt0xDev
+setup.cfg @Crypt0xDev
+pyproject.toml @Crypt0xDev
+
+# GitHub workflows and templates
+/.github/ @Crypt0xDev
+
+# Tests
+/tests/ @Crypt0xDev

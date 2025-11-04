@@ -1,0 +1,169 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# WirelessPen specific files
+# Aircrack-ng output files
+*.cap
+*.pcap
+*.csv
+*.netxml
+*.kismet.csv
+*.kismet.netxml
+
+# Handshake files
+*handshake*
+*pmkid*
+
+# Log files
+*.log
+logs/
+wirelesspen.log
+
+# Temporary files
+temp/
+tmp/
+.tmp/
+tmp_*
+Captura*
+myHashes*
+replay_*
+scan_*
+handshake_*
+pmkid_*
+wps_*
+
+# Output directories (but keep structure)
+WirelessPen_Results/
+results/
+captures/
+logs/
+output/
+*.hash
+*.hccapx
+
+# System and runtime files
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Backup and temporary files
+*~
+*.bak
+*.backup
+*.swp
+*.tmp
+
+# Sensitive information
+*.key
+*.pem
+*.crt
+credentials.txt
+passwords.txt
+wordlists/
+dict/
+
+# Configuration files with sensitive data
+config_local.py
+settings_local.py
+.env.local
+
+# Compiled documentation
+docs/_build/
+docs/build/
+
+# Network capture files
+*.cap
+*.pcap
+*.pcapng
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Test files
+test_captures/
+test_results/
+
+# Custom ignore patterns
+custom_scripts/
+private_tools/
+local_configs/
