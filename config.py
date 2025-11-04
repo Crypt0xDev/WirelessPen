@@ -10,8 +10,16 @@ from pathlib import Path
 # Framework Information
 FRAMEWORK_NAME = "WirelessPen"
 VERSION = "2.2.0"
+FRAMEWORK_VERSION = VERSION  # Alias for compatibility
 BUILD = "Professional Edition"
 AUTHOR = "Crypt0xDev"
+
+# Author information dict for tests
+AUTHOR_INFO = {
+    "name": AUTHOR,
+    "email": "crypt0xdev@users.noreply.github.com",
+    "github": "https://github.com/Crypt0xDev"
+}
 GITHUB = "https://github.com/Crypt0xDev/WirelessPen"
 LICENSE = "MIT"
 BUILD_DATE = "2024-11-04"
@@ -197,6 +205,41 @@ SUPPORTED_HARDWARE = {
         "monitor_mode": False,  # Limited support
         "injection": False,
     },
+}
+
+# Aliases for compatibility with tests
+WIRELESS_CARDS = {
+    vendor: [{"chipset": chip, "driver": drv} 
+             for chip, drv in zip(info["chipsets"], info["drivers"])]
+    for vendor, info in SUPPORTED_HARDWARE.items()
+}
+
+# Attack Modes Configuration (for tests)
+ATTACK_MODES = {
+    "handshake": {
+        "name": "Handshake Capture",
+        "description": "Capture WPA/WPA2 handshake for offline cracking"
+    },
+    "pmkid": {
+        "name": "PMKID Attack",
+        "description": "Extract PMKID hash for hashcat cracking"
+    },
+    "wps": {
+        "name": "WPS Attack", 
+        "description": "Attack WPS-enabled access points"
+    },
+    "evil_twin": {
+        "name": "Evil Twin",
+        "description": "Create rogue access point to capture credentials"
+    }
+}
+
+# Default Configuration (for tests)
+DEFAULT_CONFIG = {
+    "scan_time": DEFAULT_SCAN_TIME,
+    "deauth_count": DEAUTH_COUNT, 
+    "handshake_timeout": HANDSHAKE_TIMEOUT,
+    "wps_timeout": WPS_TIMEOUT
 }
 
 # Attack Configurations
