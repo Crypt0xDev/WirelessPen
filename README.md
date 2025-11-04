@@ -3,7 +3,7 @@
 <div align="center">
 
 ![WirelessPen Logo](https://img.shields.io/badge/WirelessPen-v2.2.0-red?style=for-the-badge&logo=wifi&logoColor=white)
-[![Python](https://img.shields.io/badge/Python-3.6+-blue?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![Python](https://img.shields.io/badge/Python-3.8+-blue?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Linux-lightgrey?style=for-the-badge&logo=linux)](https://linux.org)
 

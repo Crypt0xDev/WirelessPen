@@ -1,6 +1,6 @@
 [tool.black]
 line-length = 88
-target-version = ['py36']
+target-version = ['py38']
 include = '\.pyi?$'
 extend-exclude = '''
 /(
@@ -25,7 +25,7 @@ force_grid_wrap = 0
 use_parentheses = true
 
 [tool.mypy]
-python_version = "3.6"
+python_version = "3.8"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = false
