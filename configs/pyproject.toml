@@ -31,7 +31,6 @@ warn_unused_configs = false
 disallow_untyped_defs = false
 ignore_missing_imports = true
 check_untyped_defs = false
-ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 minversion = "6.0"
