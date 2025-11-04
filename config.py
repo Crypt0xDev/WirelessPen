@@ -18,7 +18,7 @@ AUTHOR = "Crypt0xDev"
 AUTHOR_INFO = {
     "name": AUTHOR,
     "email": "crypt0xdev@users.noreply.github.com",
-    "github": "https://github.com/Crypt0xDev"
+    "github": "https://github.com/Crypt0xDev",
 }
 GITHUB = "https://github.com/Crypt0xDev/WirelessPen"
 LICENSE = "MIT"
@@ -209,8 +209,10 @@ SUPPORTED_HARDWARE = {
 
 # Aliases for compatibility with tests
 WIRELESS_CARDS = {
-    vendor: [{"chipset": chip, "driver": drv} 
-             for chip, drv in zip(info["chipsets"], info["drivers"])]
+    vendor: [
+        {"chipset": chip, "driver": drv}
+        for chip, drv in zip(info["chipsets"], info["drivers"])
+    ]
     for vendor, info in SUPPORTED_HARDWARE.items()
 }
 
@@ -218,28 +220,25 @@ WIRELESS_CARDS = {
 ATTACK_MODES = {
     "handshake": {
         "name": "Handshake Capture",
-        "description": "Capture WPA/WPA2 handshake for offline cracking"
+        "description": "Capture WPA/WPA2 handshake for offline cracking",
     },
     "pmkid": {
         "name": "PMKID Attack",
-        "description": "Extract PMKID hash for hashcat cracking"
+        "description": "Extract PMKID hash for hashcat cracking",
     },
-    "wps": {
-        "name": "WPS Attack", 
-        "description": "Attack WPS-enabled access points"
-    },
+    "wps": {"name": "WPS Attack", "description": "Attack WPS-enabled access points"},
     "evil_twin": {
         "name": "Evil Twin",
-        "description": "Create rogue access point to capture credentials"
-    }
+        "description": "Create rogue access point to capture credentials",
+    },
 }
 
 # Default Configuration (for tests)
 DEFAULT_CONFIG = {
     "scan_time": DEFAULT_SCAN_TIME,
-    "deauth_count": DEAUTH_COUNT, 
+    "deauth_count": DEAUTH_COUNT,
     "handshake_timeout": HANDSHAKE_TIMEOUT,
-    "wps_timeout": WPS_TIMEOUT
+    "wps_timeout": WPS_TIMEOUT,
 }
 
 # Attack Configurations

@@ -2,8 +2,8 @@
 """
 WirelessPen - Professional Wireless Penetration Testing Framework v2.2.0
 
-A comprehensive wireless security assessment tool for ethical hackers and 
-security professionals. This framework provides advanced capabilities for 
+A comprehensive wireless security assessment tool for ethical hackers and
+security professionals. This framework provides advanced capabilities for
 authorized wireless network penetration testing and security auditing.
 
 Features:
@@ -34,11 +34,9 @@ import signal
 import time
 import platform
 import re
-import threading
-import json
 import hashlib
 from datetime import datetime
-from typing import List, Optional, Tuple, Dict, Any
+from typing import List, Optional, Tuple, Dict
 from pathlib import Path
 
 # Script Configuration
@@ -1155,7 +1153,7 @@ def wifi_diagnostic():
         f"\n{Colors.YELLOW}[5/8]{Colors.RESET} {Colors.BOLD}Capacidades del Adaptador:{Colors.RESET}"
     )
     code, capabilities, _ = run_command(
-        f"iw list 2>/dev/null | grep -A 10 'Supported interface modes'"
+        "iw list 2>/dev/null | grep -A 10 'Supported interface modes'"
     )
     if code == 0 and capabilities.strip():
         print(f"  {Colors.GREEN}✓{Colors.RESET} Modos soportados:")
@@ -1461,12 +1459,12 @@ def check_dependencies() -> bool:
         print(f"\n{Colors.YELLOW}📋 INSTALLATION COMMANDS:{Colors.RESET}")
         print(f"  {Colors.CYAN}# Debian/Ubuntu:{Colors.RESET}")
         print(
-            f"  sudo apt update && sudo apt install -y aircrack-ng wireless-tools iw macchanger ethtool"
+            "  sudo apt update && sudo apt install -y aircrack-ng wireless-tools iw macchanger ethtool"
         )
         print(f"\n  {Colors.CYAN}# Arch Linux:{Colors.RESET}")
-        print(f"  sudo pacman -S aircrack-ng wireless_tools iw macchanger ethtool")
+        print("  sudo pacman -S aircrack-ng wireless_tools iw macchanger ethtool")
         print(f"\n  {Colors.CYAN}# Kali Linux:{Colors.RESET}")
-        print(f"  sudo apt update && sudo apt install -y kali-linux-wireless")
+        print("  sudo apt update && sudo apt install -y kali-linux-wireless")
         print()
         return False
 
@@ -1484,7 +1482,7 @@ def check_dependencies() -> bool:
             f"{Colors.WARNING} {Colors.YELLOW}Optional tools missing:{Colors.RESET} {', '.join(missing_optional)}"
         )
         print(f"  {Colors.GRAY}Install for full functionality:{Colors.RESET}")
-        print(f"  sudo apt install -y reaver bully hcxtools hashcat hostapd dnsmasq")
+        print("  sudo apt install -y reaver bully hcxtools hashcat hostapd dnsmasq")
 
     print()
     return True
@@ -1622,8 +1620,8 @@ def handle_monitor_mode() -> bool:
         f"{interface}mon0",
         f"{interface}mon1",
         interface,
-        f"wlan0mon",  # Common fallback
-        f"wlan1mon",
+        "wlan0mon",  # Common fallback
+        "wlan1mon",
     ]
 
     for test_interface in possible_interfaces:
@@ -1751,7 +1749,7 @@ def scan_networks(
         print(f"\n{Colors.WARNING} Scan interrupted by user")
         try:
             kill_process_group(proc)
-        except:
+        except (ProcessLookupError, AttributeError):
             pass
         time.sleep(1)
 
@@ -1766,7 +1764,7 @@ def scan_networks(
     if not networks:
         print(f"\n{Colors.WARNING} No WiFi networks detected")
         print(f"\n{Colors.YELLOW}💡 TROUBLESHOOTING:{Colors.RESET}")
-        print(f"  • Check antenna connection")
+        print("  • Check antenna connection")
         print(
             f"  • Try different channels: {Colors.CYAN}--channel 1,6,11{Colors.RESET}"
         )
@@ -1802,26 +1800,25 @@ def scan_networks(
                 pwr_val = int(power)
                 if pwr_val >= -50:
                     pwr_color = Colors.GREEN
-                    signal_bars = "████"
+                    # signal_bars = "████"  # Unused
                 elif pwr_val >= -60:
                     pwr_color = Colors.LIME
-                    signal_bars = "███░"
+                    # signal_bars = "███░"  # Unused
                 elif pwr_val >= -70:
                     pwr_color = Colors.YELLOW
-                    signal_bars = "██░░"
+                    # signal_bars = "██░░"  # Unused
                 elif pwr_val >= -80:
                     pwr_color = Colors.ORANGE
-                    signal_bars = "█░░░"
+                    # signal_bars = "█░░░"  # Unused
                 else:
                     pwr_color = Colors.RED
-                    signal_bars = "░░░░"
+                    # signal_bars = "░░░░"  # Unused
                 power_display = f"{pwr_color}{power:>4}{Colors.RESET}"
-            except:
+            except (ValueError, TypeError):
                 power_display = f"{Colors.GRAY}{power:>4}{Colors.RESET}"
-                signal_bars = "░░░░"
         else:
             power_display = f"{Colors.GRAY} N/A{Colors.RESET}"
-            signal_bars = "░░░░"
+            # signal_bars = "░░░░"  # Reserved for future use
 
         # Color coding for encryption
         if "WPA3" in encryption:
@@ -1865,12 +1862,12 @@ def scan_networks(
             elif choice == "s":
                 # Sort options
                 print(f"\n{Colors.YELLOW}Sort by:{Colors.RESET}")
-                print(f"  1) Signal strength (current)")
-                print(f"  2) Channel")
-                print(f"  3) Encryption type")
-                print(f"  4) ESSID (alphabetical)")
+                print("  1) Signal strength (current)")
+                print("  2) Channel")
+                print("  3) Encryption type")
+                print("  4) ESSID (alphabetical)")
 
-                sort_choice = input(f"Sort option [1-4]: ").strip()
+                sort_choice = input("Sort option [1-4]: ").strip()
                 if sort_choice == "2":
                     networks.sort(key=lambda x: int(x.get("channel", "0")))
                 elif sort_choice == "3":
@@ -1887,11 +1884,11 @@ def scan_networks(
             elif choice == "f":
                 # Filter options
                 print(f"\n{Colors.YELLOW}Filter by:{Colors.RESET}")
-                print(f"  1) WPA2/WPA3 only")
-                print(f"  2) Strong signals (-60 dBm or better)")
-                print(f"  3) Specific channel")
+                print("  1) WPA2/WPA3 only")
+                print("  2) Strong signals (-60 dBm or better)")
+                print("  3) Specific channel")
 
-                filter_choice = input(f"Filter option [1-3]: ").strip()
+                filter_choice = input("Filter option [1-3]: ").strip()
 
                 if filter_choice == "1":
                     networks = [n for n in networks if "WPA" in n.get("encryption", "")]
@@ -1900,7 +1897,7 @@ def scan_networks(
                         n for n in networks if int(n.get("power", "-100")) >= -60
                     ]
                 elif filter_choice == "3":
-                    ch = input(f"Enter channel (1-14): ").strip()
+                    ch = input("Enter channel (1-14): ").strip()
                     networks = [n for n in networks if n.get("channel") == ch]
 
                 if not networks:
@@ -2175,13 +2172,13 @@ rsn_pairwise=CCMP
         print(f"\n{Colors.YELLOW}[!]{Colors.RESET} Timeout del Evil Twin")
         try:
             proc_deauth.terminate()
-        except:
+        except (ProcessLookupError, AttributeError):
             pass
     except KeyboardInterrupt:
         print(f"\n{Colors.YELLOW}[*]{Colors.RESET} Evil Twin interrumpido")
         try:
             proc_deauth.terminate()
-        except:
+        except (ProcessLookupError, AttributeError):
             pass
 
     return False
@@ -2283,7 +2280,7 @@ def attack_pmkid_hashcat():
     cmd_hcx = f"timeout 60 hcxdumptool -i {interface} --enable_status=1 -o {output_file}.pcapng"
 
     try:
-        result = subprocess.run(cmd_hcx, shell=True)
+        subprocess.run(cmd_hcx, shell=True)
 
         if os.path.exists(f"{output_file}.pcapng"):
             print(f"{Colors.GREEN}✓{Colors.RESET} Captura completada")
@@ -2296,10 +2293,10 @@ def attack_pmkid_hashcat():
 
             if code == 0 and os.path.exists(f"{output_file}.hash"):
                 print(f"\n{Colors.GREEN}{'='*80}")
-                print(f"  ✓ ¡PMKID CAPTURADO Y CONVERTIDO!")
+                print("  ✓ ¡PMKID CAPTURADO Y CONVERTIDO!")
                 print(f"{'='*80}{Colors.RESET}\n")
                 print(f"Hash file: {output_file}.hash")
-                print(f"\nPara crackear con Hashcat:")
+                print("\nPara crackear con Hashcat:")
                 print(f"  hashcat -m 16800 {output_file}.hash wordlist.txt")
                 return True
             else:
@@ -2578,7 +2575,7 @@ def attack_handshake() -> bool:
         print(f"\n{Colors.WARNING} Capture interrupted by user")
         try:
             kill_process_group(proc_airodump)
-        except:
+        except (ProcessLookupError, AttributeError):
             pass
         time.sleep(2)
     except Exception as e:
@@ -2669,9 +2666,9 @@ def attack_handshake() -> bool:
             print(f"    aircrack-ng -w /path/to/wordlist.txt '{cap_file}'")
 
         print(f"\n  {Colors.BOLD}Using hashcat (if available):{Colors.RESET}")
-        print(f"    # Convert to hashcat format first:")
+        print("    # Convert to hashcat format first:")
         print(f"    hcxpcapngtool -o '{output_file}.hash' '{cap_file}'")
-        print(f"    # Then crack with hashcat:")
+        print("    # Then crack with hashcat:")
         if wordlists:
             print(f"    hashcat -m 22000 '{output_file}.hash' '{wordlists[0]}'")
         else:
@@ -2690,11 +2687,11 @@ def attack_handshake() -> bool:
     else:
         print(f"\n{Colors.FAILURE} {Colors.RED}NO HANDSHAKE CAPTURED{Colors.RESET}")
         print(f"\n{Colors.YELLOW}💡 TROUBLESHOOTING:{Colors.RESET}")
-        print(f"  • Ensure clients are connected to the network")
-        print(f"  • Try increasing deauth packet count")
-        print(f"  • Check if network uses WPA3 (requires different approach)")
-        print(f"  • Verify monitor mode is working correctly")
-        print(f"  • Consider using PMKID attack for clientless networks")
+        print("  • Ensure clients are connected to the network")
+        print("  • Try increasing deauth packet count")
+        print("  • Check if network uses WPA3 (requires different approach)")
+        print("  • Verify monitor mode is working correctly")
+        print("  • Consider using PMKID attack for clientless networks")
 
         return False
 

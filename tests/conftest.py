@@ -1,7 +1,6 @@
 # Test configuration for WirelessPen
 import pytest
 import tempfile
-import os
 from unittest.mock import MagicMock
 
 
