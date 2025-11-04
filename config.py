@@ -208,13 +208,14 @@ SUPPORTED_HARDWARE = {
 }
 
 # Aliases for compatibility with tests
-WIRELESS_CARDS = {
-    vendor: [
-        {"chipset": chip, "driver": drv}
-        for chip, drv in zip(info["chipsets"], info["drivers"])
-    ]
-    for vendor, info in SUPPORTED_HARDWARE.items()
-}
+WIRELESS_CARDS = {}
+for vendor, info in SUPPORTED_HARDWARE.items():
+    cards = []
+    chipsets = info["chipsets"]
+    drivers = info["drivers"]
+    for chip, drv in zip(chipsets, drivers):
+        cards.append({"chipset": chip, "driver": drv})
+    WIRELESS_CARDS[vendor] = cards
 
 # Attack Modes Configuration (for tests)
 ATTACK_MODES = {

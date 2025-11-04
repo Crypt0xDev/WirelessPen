@@ -1668,7 +1668,7 @@ def handle_monitor_mode() -> bool:
 
 
 def scan_networks(
-    scan_time: int = None, target_channel: str = None
+    scan_time: Optional[int] = None, target_channel: Optional[str] = None
 ) -> Optional[Dict[str, str]]:
     """
     Enhanced WiFi network scanner with filtering and advanced features.
