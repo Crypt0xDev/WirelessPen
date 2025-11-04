@@ -1,0 +1,3 @@
+# Git attributes for proper file handling
+*.coveragerc linguist-language=INI
+.coveragerc linguist-language=INI
